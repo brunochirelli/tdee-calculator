@@ -5,6 +5,6 @@ describe("Macronutrients", () => {
   it("Should render without errors", () => {
     render(<Macronutrients calories={2000} />);
 
-    expect(screen.getByText("Macronutrients")).toBeInTheDocument();
+    expect(screen.getByText("Moderate Carb (30/35/35)")).toBeInTheDocument();
   });
 });

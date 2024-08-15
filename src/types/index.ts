@@ -15,9 +15,12 @@ export type MacrosOptions = {
   highCarb: Macro;
 };
 
+export type Female = "1";
+export type Male = "2";
+
 export const Sex = {
-  FEMALE: "1",
-  MALE: "2",
+  FEMALE: "1" as Female,
+  MALE: "2" as Male,
 } as const;
 
 export const ActivityLevel = {
