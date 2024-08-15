@@ -2,7 +2,7 @@ export const MacroType = {
   PROTEIN: 4,
   FAT: 9,
   CARB: 4,
-};
+} as const;
 
 type Protein = number;
 type Fat = number;
@@ -27,3 +27,11 @@ export const ActivityLevel = {
   VERY_ACTIVE: "1.725",
   SUPER_ACTIVE: "1.9",
 } as const;
+
+export type BMRSearchParams = {
+  sex: string;
+  weight: string;
+  height: string;
+  age: string;
+  activity: string;
+};

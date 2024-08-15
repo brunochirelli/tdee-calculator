@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import BMRForm from "./BMRForm";
+import Calories from "./Calories";
 
 const meta = {
-  title: "Component/BMRForm",
-  component: BMRForm,
+  title: "Component/Calories",
+  component: Calories,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -14,9 +14,13 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof BMRForm>;
+} satisfies Meta<typeof Calories>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    calories: 2000,
+  },
+};

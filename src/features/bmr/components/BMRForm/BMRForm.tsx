@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ActivityLevel, Sex } from "@/types";
 import { useRouter } from "next/navigation";
+import { calculateBMR } from "../../utils/bmr";
 
 const schema = z.object({
   sex: z.string(),
@@ -32,8 +33,18 @@ export default function BMRForm() {
       Object.fromEntries(
         Object.entries(obj).map(([key, value]) => [key, String(value)]),
       );
+
+    const bmr = calculateBMR({
+      ageInYears: +data.age,
+      heighInCm: +data.height,
+      weightInKg: +data.weight,
+      sex: data.sex,
+    });
+
+    console.log(bmr);
+
     const searchParams = new URLSearchParams(transformObjValuesToString(data));
-    router.push(`/result?${searchParams.toString()}`);
+    router.push(`/results?${searchParams.toString()}`);
   };
 
   return (

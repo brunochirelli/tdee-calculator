@@ -30,7 +30,7 @@ export const calculateBMR = ({
 
 export const calculateRateByActivityLevel = (
   bmr: number,
-  activityLevel: keyof typeof ActivityLevel,
+  activityLevel: number,
 ) => {
   return Math.ceil(bmr * +activityLevel);
 };
