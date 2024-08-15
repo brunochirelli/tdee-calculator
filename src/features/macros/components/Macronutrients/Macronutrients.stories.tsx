@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import MacrosCard from "./MacroCard";
+import Macronutrients from "./Macronutrients";
 
 const meta = {
-  title: "Components/MacroCard",
-  component: MacrosCard,
+  title: "Components/Macronutrients",
+  component: Macronutrients,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -14,16 +14,13 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof MacrosCard>;
+} satisfies Meta<typeof Macronutrients>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    info: "Moderate Carb (30/35/35)",
-    carbs: 100,
-    fats: 100,
-    proteins: 100,
+    calories: 2000,
   },
 };

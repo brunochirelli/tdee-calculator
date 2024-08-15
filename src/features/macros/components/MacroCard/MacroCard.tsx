@@ -1,3 +1,5 @@
+import { CARB, FAT, PROTEIN } from "@/types/consts";
+
 type MacroCardProps = {
   info: string;
   carbs: number;
@@ -5,7 +7,7 @@ type MacroCardProps = {
   fats: number;
 };
 
-export default function MacroCard({
+export default function MacrosCard({
   info,
   carbs,
   proteins,
@@ -14,9 +16,9 @@ export default function MacroCard({
   return (
     <div>
       <p>{info}</p>
-      <p>{proteins}g protein</p>
-      <p>{fats}g fat</p>
-      <p>{carbs}g carb</p>
+      <p>{Math.round(proteins / PROTEIN)}g protein</p>
+      <p>{Math.round(fats / FAT)}g fat</p>
+      <p>{Math.round(carbs / CARB)}g carb</p>
     </div>
   );
 }

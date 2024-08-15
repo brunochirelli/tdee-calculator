@@ -8,6 +8,10 @@ export const ACTIVITY_NAME_MAP: Record<string, string> = {
   [ActivityLevel.SUPER_ACTIVE]: "Athlete",
 };
 
+export const PROTEIN = 4;
+export const FAT = 9;
+export const CARB = 4;
+
 export const BMI_LEVELS = {
   UNDERWEIGHT: 0,
   NORMAL: 1,

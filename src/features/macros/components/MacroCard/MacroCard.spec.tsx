@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import MacroCard from "./MacroCard";
+import MacrosCard from "./MacroCard";
 
 describe("MacroCard", () => {
   it("Should render without errors", () => {
     render(
-      <MacroCard
+      <MacrosCard
         info="Moderate Carb (30/35/35)"
         carbs={218}
         fats={97}

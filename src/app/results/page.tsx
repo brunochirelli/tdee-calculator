@@ -8,6 +8,7 @@ import {
   calculateRateByActivityLevel,
   isValidSearchParams,
 } from "@/features/bmr/utils/bmr";
+import Macronutrients from "@/features/macros/components/Macronutrients/Macronutrients";
 import { TdeeSearchParams } from "@/types";
 import { redirect } from "next/navigation";
 
@@ -27,16 +28,17 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
     weightInKg: +weight,
     sex,
   });
-  const rateByActivityLevel = calculateRateByActivityLevel(bmr, +activity);
+  const caloriesWithActivity = calculateRateByActivityLevel(bmr, +activity);
   const bmi = calculateBMI(+weight, +height);
 
   return (
     <>
       <h1>Your stats</h1>
       <TdeeResultForm />
-      <Calories calories={rateByActivityLevel} />
+      <Calories calories={caloriesWithActivity} />
       <CaloriesTable bmr={bmr} activityLevel={activity} />
       <BMI bmi={bmi} />
+      <Macronutrients calories={caloriesWithActivity} />
     </>
   );
 }
