@@ -1,24 +1,16 @@
 import Calories from "@/features/bmr/components/Calories/Calories";
 import CaloriesTable from "@/features/bmr/components/CaloriesTable/CaloriesTable";
+import TdeeResultForm from "@/features/bmr/components/TdeeResultForm/TdeeResultForm";
 import {
   calculateBMR,
   calculateRateByActivityLevel,
+  isValidSearchParams,
 } from "@/features/bmr/utils/bmr";
-import { BMRSearchParams } from "@/types";
+import { TdeeSearchParams } from "@/types";
 import { redirect } from "next/navigation";
 
-function isValidSearchParams(searchParams: BMRSearchParams): boolean {
-  return (
-    !!searchParams.sex ||
-    !!searchParams.weight ||
-    !!searchParams.height ||
-    !!searchParams.age ||
-    !!searchParams.activity
-  );
-}
-
 type ResultsPageProps = {
-  searchParams: BMRSearchParams;
+  searchParams: TdeeSearchParams;
 };
 
 export default function ResultsPage({ searchParams }: ResultsPageProps) {
@@ -38,10 +30,7 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
   return (
     <>
       <h1>Your stats</h1>
-      <p>
-        You are a {age} year old {sex} who is {height} cm tall and weights{" "}
-        {weight} kg while doing {activity} activity.
-      </p>
+      <TdeeResultForm />
       <Calories calories={rateByActivityLevel} />
       <CaloriesTable bmr={bmr} activityLevel={activity} />
     </>

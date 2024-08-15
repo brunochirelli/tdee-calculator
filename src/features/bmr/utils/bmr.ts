@@ -1,4 +1,4 @@
-import { ActivityLevel, Sex } from "@/types";
+import { TdeeSearchParams, Sex } from "@/types";
 
 type BMR = number;
 type BMRArgs = {
@@ -33,4 +33,16 @@ export const calculateRateByActivityLevel = (
   activityLevel: number,
 ) => {
   return Math.ceil(bmr * +activityLevel);
+};
+
+export const isValidSearchParams = (
+  searchParams: TdeeSearchParams,
+): boolean => {
+  return (
+    !!searchParams.sex &&
+    !!searchParams.weight &&
+    !!searchParams.height &&
+    !!searchParams.age &&
+    !!searchParams.activity
+  );
 };

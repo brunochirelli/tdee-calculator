@@ -28,7 +28,7 @@ export const ActivityLevel = {
   SUPER_ACTIVE: "1.9",
 } as const;
 
-export type BMRSearchParams = {
+export type TdeeSearchParams = {
   sex: string;
   weight: string;
   height: string;

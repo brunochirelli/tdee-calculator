@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import BMRForm from "./BMRForm";
+import TdeeForm from "./TdeeForm";
+import { TestClientProvider } from "@/providers/TestProvider";
 
 describe("BMRForm", () => {
   it("Should render without errors", () => {
-    render(<BMRForm />);
+    render(<TdeeForm />, { wrapper: TestClientProvider });
 
     expect(
       screen.getByRole("button", { name: "Calculate" }),

@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import BMRForm from "./BMRForm";
+import TdeeForm from "./TdeeForm";
 
 const meta = {
-  title: "Component/BMRForm",
-  component: BMRForm,
+  title: "Component/TdeeForm",
+  component: TdeeForm,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -14,7 +14,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof BMRForm>;
+} satisfies Meta<typeof TdeeForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
