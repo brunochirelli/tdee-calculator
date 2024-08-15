@@ -3,7 +3,7 @@ export const calculateBMI = (weightInKg: number, heightInCm: number) => {
   return Math.round((weightInKg / heightInM ** 2 + Number.EPSILON) * 100) / 100;
 };
 
-export const getBMIScore = (bmi: number) => {
+export const getBMIScore = (bmi: number): number => {
   if (bmi <= 18.5) {
     return 0;
   } else if (bmi < 24.9) {

@@ -1,3 +1,5 @@
+import BMI from "@/features/bmi/components/Bmi/Bmi";
+import { calculateBMI } from "@/features/bmi/utils/bmi";
 import Calories from "@/features/bmr/components/Calories/Calories";
 import CaloriesTable from "@/features/bmr/components/CaloriesTable/CaloriesTable";
 import TdeeResultForm from "@/features/bmr/components/TdeeResultForm/TdeeResultForm";
@@ -26,6 +28,7 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
     sex,
   });
   const rateByActivityLevel = calculateRateByActivityLevel(bmr, +activity);
+  const bmi = calculateBMI(+weight, +height);
 
   return (
     <>
@@ -33,6 +36,7 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
       <TdeeResultForm />
       <Calories calories={rateByActivityLevel} />
       <CaloriesTable bmr={bmr} activityLevel={activity} />
+      <BMI bmi={bmi} />
     </>
   );
 }
