@@ -1,8 +1,8 @@
-export enum MacroType {
-  Protein = 4,
-  Fat = 9,
-  Carb = 4,
-}
+export const MacroType = {
+  PROTEIN: 4,
+  FAT: 9,
+  CARB: 4,
+};
 
 type Protein = number;
 type Fat = number;
@@ -15,14 +15,15 @@ export type MacrosOptions = {
   highCarb: Macro;
 };
 
-export enum Sex {
-  Female = 1,
-  Male = 2,
-}
-export enum ActivityLevel {
-  SEDENTARY = "1.2",
-  LIGHTLY_ACTIVE = "1.375",
-  MODERATELY_ACTIVE = "1.55",
-  VERY_ACTIVE = "1.725",
-  SUPER_ACTIVE = "1.9",
-}
+export const Sex = {
+  FEMALE: "1",
+  MALE: "2",
+} as const;
+
+export const ActivityLevel = {
+  SEDENTARY: "1.2",
+  LIGHTLY_ACTIVE: "1.375",
+  MODERATELY_ACTIVE: "1.55",
+  VERY_ACTIVE: "1.725",
+  SUPER_ACTIVE: "1.9",
+} as const;

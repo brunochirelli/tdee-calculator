@@ -2,7 +2,7 @@ import { Sex } from "@/types";
 import { calculateBMR } from "./bmr";
 
 describe("bmr", () => {
-  it.each([1, 2] as Sex[])(
+  it.each([Sex.MALE, Sex.FEMALE])(
     "should calculate BMR for sex %s using the Mifflin St Jeor equation",
     (sex) => {
       const result = calculateBMR({
@@ -12,7 +12,7 @@ describe("bmr", () => {
         sex,
       });
 
-      expect(result).toBe(sex === Sex.Male ? 1618 : 1452);
+      expect(result).toBe(sex === Sex.MALE ? 1618 : 1452);
     },
   );
 
@@ -22,7 +22,6 @@ describe("bmr", () => {
         ageInYears: 30,
         heighInCm: 170,
         weightInKg: 70,
-        // @ts-expect-error Testing invalid input
         sex: "",
       }),
     ).toThrowError(/Invalid sex/);

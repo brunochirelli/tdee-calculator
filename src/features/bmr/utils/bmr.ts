@@ -2,7 +2,7 @@ import { ActivityLevel, Sex } from "@/types";
 
 type BMR = number;
 type BMRArgs = {
-  sex: Sex;
+  sex: string;
   weightInKg: number;
   heighInCm: number;
   ageInYears: number;
@@ -15,11 +15,11 @@ export const calculateBMR = ({
   heighInCm,
   ageInYears,
 }: BMRArgs): BMR => {
-  if (sex === Sex.Male) {
+  if (sex === Sex.MALE) {
     return Math.round(10 * weightInKg + 6.25 * heighInCm - 5 * ageInYears + 5);
   }
 
-  if (sex === Sex.Female) {
+  if (sex === Sex.FEMALE) {
     return Math.round(
       10 * weightInKg + 6.25 * heighInCm - 5 * ageInYears - 161,
     );
@@ -30,7 +30,7 @@ export const calculateBMR = ({
 
 export const calculateRateByActivityLevel = (
   bmr: number,
-  activityLevel: ActivityLevel,
+  activityLevel: keyof typeof ActivityLevel,
 ) => {
   return Math.ceil(bmr * +activityLevel);
 };
