@@ -1,8 +1,8 @@
 "use client";
 import { ActivityLevel, Sex } from "@/types";
 import { useRouter } from "next/navigation";
-import { calculateBMR } from "../../utils/bmr";
 import { TdeeFormSchema, useTdeeForm } from "../../hooks/useTdeeForm";
+import { calculateBMR } from "@/lib/bmr";
 
 export default function TdeeForm() {
   const router = useRouter();

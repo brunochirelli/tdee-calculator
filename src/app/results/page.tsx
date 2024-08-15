@@ -1,16 +1,17 @@
-import BMI from "@/features/bmi/components/Bmi/Bmi";
-import { calculateBMI } from "@/features/bmi/utils/bmi";
-import Calories from "@/features/bmr/components/Calories/Calories";
-import CaloriesTable from "@/features/bmr/components/CaloriesTable/CaloriesTable";
-import TdeeResultForm from "@/features/bmr/components/TdeeResultForm/TdeeResultForm";
+import BMI from "@/components/Bmi/Bmi";
+import { calculateBMI } from "@/lib/bmi";
+import Calories from "@/components/Calories/Calories";
+import CaloriesTable from "@/components/CaloriesTable/CaloriesTable";
+import TdeeResultForm from "@/components/TdeeResultForm/TdeeResultForm";
+
+import Macronutrients from "@/components/Macronutrients/Macronutrients";
+import { TdeeSearchParams } from "@/types";
+import { redirect } from "next/navigation";
 import {
   calculateBMR,
   calculateRateByActivityLevel,
   isValidSearchParams,
-} from "@/features/bmr/utils/bmr";
-import Macronutrients from "@/features/macros/components/Macronutrients/Macronutrients";
-import { TdeeSearchParams } from "@/types";
-import { redirect } from "next/navigation";
+} from "@/lib/bmr";
 
 type ResultsPageProps = {
   searchParams: TdeeSearchParams;

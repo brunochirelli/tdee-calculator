@@ -1,4 +1,4 @@
-import TdeeForm from "@/features/bmr/components/TdeeForm/TdeeForm";
+import TdeeForm from "@/components/TdeeForm/TdeeForm";
 
 export default function Home() {
   return (

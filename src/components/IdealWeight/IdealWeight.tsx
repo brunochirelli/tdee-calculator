@@ -1,5 +1,5 @@
 import { Female, Male } from "@/types";
-import { calculateIBW } from "../../utils/idealWeight";
+import { calculateIBW } from "../../lib/idealWeight";
 
 type IdealWeightProps = {
   height: number;

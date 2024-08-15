@@ -1,4 +1,4 @@
-import { MacrosOptions, MacroType } from "../../../types";
+import { MacrosOptions, MacroType } from "../types";
 
 export const getMacros = (currentCalories: number): MacrosOptions => {
   if (isNaN(currentCalories)) throw new Error("Invalid input");
