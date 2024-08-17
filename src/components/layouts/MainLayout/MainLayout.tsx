@@ -7,10 +7,10 @@ type MainLayoutProps = {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <>
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
       <Header />
-      <main>{children}</main>
+      <main className="p-8">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }
