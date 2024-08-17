@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Home from "./page";
-import MainLayout from "@/layouts/MainLayout/MainLayout";
+import MainLayout from "@/components/layouts/MainLayout/MainLayout";
 
 const meta = {
   title: "Page/Home",

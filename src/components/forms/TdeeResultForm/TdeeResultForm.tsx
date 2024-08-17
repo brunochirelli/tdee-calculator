@@ -1,9 +1,9 @@
 "use client";
 
+import { useTdeeForm } from "@/hooks/useTdeeForm";
 import { useSearchParams } from "next/navigation";
-import { useTdeeForm } from "../../hooks/useTdeeForm";
 
-export default function TdeeResultForm() {
+export const TdeeResultForm = () => {
   const searchParams = useSearchParams();
   const age = searchParams.get("age") ?? "";
   const sex = searchParams.get("sex") ?? "";
@@ -37,4 +37,4 @@ export default function TdeeResultForm() {
       </p>
     </>
   );
-}
+};
