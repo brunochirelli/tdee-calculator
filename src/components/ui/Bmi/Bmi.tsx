@@ -1,6 +1,6 @@
 import { BMI_RANGES_TEXT_MAP } from "@/types/consts";
-import { getBMIScore } from "../../lib/bmi";
 import BmiTable from "../BmiTable/BmiTable";
+import { getBMIScore } from "@/lib/bmi";
 
 type BMIProps = {
   bmi: number;

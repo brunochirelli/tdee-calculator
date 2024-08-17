@@ -1,9 +1,9 @@
+import { getBMIScore } from "@/lib/bmi";
 import {
   BMI_LEVELS,
   BMI_RANGES_TEXT_MAP,
   BMI_SCORE_TEXT_MAP,
 } from "@/types/consts";
-import { getBMIScore } from "../../lib/bmi";
 
 type BmiTableProps = {
   bmi: number;

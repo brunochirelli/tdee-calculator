@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import IdealWeight from "./IdealWeight";
 import { Sex } from "@/types";
+import IdealWeight from "./IdealWeight";
 
 describe("IdealWeight", () => {
   it("Should render without errors", () => {

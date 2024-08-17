@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import TdeeResultForm from "./TdeeResultForm";
 import { TestClientProvider } from "@/providers/TestProvider";
+import { TdeeResultForm } from "./TdeeResultForm";
 
 describe("TdeeResultForm", () => {
   it("Should render without errors", () => {
