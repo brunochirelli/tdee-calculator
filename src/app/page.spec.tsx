@@ -2,7 +2,15 @@ import { render, screen } from "@testing-library/react";
 import Home from "./page";
 import { TestClientProvider } from "@/providers/TestProvider";
 
+class ResizeObserver {
+  observe() {}
+  unobserve() {}
+}
+
 describe("page.spec", () => {
+  // @ts-ignore
+  window.ResizeObserver = ResizeObserver;
+
   it("should work", () => {
     render(<Home />, { wrapper: TestClientProvider });
     expect(

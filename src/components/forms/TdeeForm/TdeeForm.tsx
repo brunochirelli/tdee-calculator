@@ -34,42 +34,39 @@ export default function TdeeForm() {
         Object.entries(obj).map(([key, value]) => [key, String(value)]),
       );
 
-    const bmr = calculateBMR({
-      ageInYears: +data.age,
-      heighInCm: +data.height,
-      weightInKg: +data.weight,
-      sex: data.sex,
-    });
-
     const searchParams = new URLSearchParams(transformObjValuesToString(data));
     router.push(`/results?${searchParams.toString()}`);
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-2 max-w-md mx-auto"
+      >
         <FormField
           control={form.control}
           name="sex"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Sex</FormLabel>
+            <FormItem className="grid grid-cols-[6rem_1fr] items-center gap-4">
+              <FormLabel className="text-right">Sex</FormLabel>
               <FormControl>
                 <RadioGroup
+                  className="flex"
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
-                  <FormItem>
+                  <FormItem className="space-x-1">
                     <FormControl>
                       <RadioGroupItem value="2" />
                     </FormControl>
-                    <FormLabel>Male</FormLabel>
+                    <FormLabel className="text-right">Male</FormLabel>
                   </FormItem>
-                  <FormItem>
+                  <FormItem className="space-x-1">
                     <FormControl>
                       <RadioGroupItem value="1" />
                     </FormControl>
-                    <FormLabel>Female</FormLabel>
+                    <FormLabel className="text-right">Female</FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
@@ -80,10 +77,10 @@ export default function TdeeForm() {
           control={form.control}
           name="age"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Age</FormLabel>
+            <FormItem className="grid grid-cols-[6rem_1fr] items-center gap-4">
+              <FormLabel className="text-right">Age</FormLabel>
               <FormControl>
-                <Input {...field} type="number" placeholder="Age" />
+                <Input {...field} type="number" className="max-w-20" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -93,10 +90,15 @@ export default function TdeeForm() {
           control={form.control}
           name="weight"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Weight</FormLabel>
+            <FormItem className="grid grid-cols-[6rem_1fr] items-center gap-4">
+              <FormLabel className="text-right">Weight</FormLabel>
               <FormControl>
-                <Input {...field} type="number" placeholder="Age" />
+                <Input
+                  {...field}
+                  type="number"
+                  placeholder="kg"
+                  className="max-w-20"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -106,10 +108,15 @@ export default function TdeeForm() {
           control={form.control}
           name="height"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Height</FormLabel>
+            <FormItem className="grid grid-cols-[6rem_1fr] items-center gap-4">
+              <FormLabel className="text-right">Height</FormLabel>
               <FormControl>
-                <Input {...field} type="number" placeholder="Age" />
+                <Input
+                  {...field}
+                  type="number"
+                  placeholder="cm"
+                  className="max-w-20"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -119,8 +126,8 @@ export default function TdeeForm() {
           control={form.control}
           name="activity"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Activity</FormLabel>
+            <FormItem className="grid grid-cols-[6rem_1fr] items-center gap-4 max-w-fit">
+              <FormLabel className="text-right">Activity</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -139,26 +146,12 @@ export default function TdeeForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Calculate</Button>
+        <div className="grid grid-cols-[6rem_1fr] items-center gap-4">
+          <div className="col-start-2">
+            <Button type="submit">Calculate</Button>
+          </div>
+        </div>
       </form>
     </Form>
   );
-}
-
-{
-  /* <input type="radio" {...register("sex")} value={Sex.FEMALE} />
-      <input type="radio" {...register("sex")} value={Sex.MALE} />
-      <input {...register("age")} type="number" placeholder="Age" />
-      <input {...register("weight")} type="number" placeholder="kg" />
-      <input {...register("height")} type="number" placeholder="cm" />
-      <select {...register("activity")}>
-        <option value={ActivityLevel.SEDENTARY}>Sedentary</option>
-        <option value={ActivityLevel.LIGHTLY_ACTIVE}>Lightly active</option>
-        <option value={ActivityLevel.MODERATELY_ACTIVE}>
-          Moderately active
-        </option>
-        <option value={ActivityLevel.VERY_ACTIVE}>Very active</option>
-        <option value={ActivityLevel.SUPER_ACTIVE}>Super active</option>
-      </select>
-      <button type="submit">Calculate</button> */
 }
