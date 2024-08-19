@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import TdeeResultForm from "./TdeeResultForm";
+import { TdeeResultForm } from "./TdeeResultForm";
 
 const meta = {
   title: "Component/TdeeResultForm",
