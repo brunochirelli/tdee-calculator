@@ -9,14 +9,19 @@ type BMIProps = {
 export default function BMI({ bmi }: BMIProps) {
   const bmiClassification = getBMIScore(bmi);
 
+  const removeTrailingZeros = (strNumber: string) =>
+    strNumber.replace(/\.?0*$/, "");
+
+  const fixedBmi = removeTrailingZeros(bmi.toFixed(2));
+
   return (
-    <>
-      <p>BMI Score: {bmi}</p>
+    <div className="space-y-2">
+      <p className="font-semibold text-2xl">BMI Score: {fixedBmi}</p>
       <p>
-        Your BMI is {bmi}, which means you are classified as{" "}
-        {BMI_RANGES_TEXT_MAP[bmiClassification]}
+        Your <b>BMI</b> is <b>{fixedBmi}</b>, which means you are classified as{" "}
+        <b>{BMI_RANGES_TEXT_MAP[bmiClassification]}</b>...
       </p>
-      <BmiTable bmi={bmi} />
-    </>
+      <BmiTable bmi={fixedBmi} />
+    </div>
   );
 }
