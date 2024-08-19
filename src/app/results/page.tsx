@@ -33,13 +33,13 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
   const bmi = calculateBMI(+weight, +height);
 
   return (
-    <>
-      <h1>Your stats</h1>
+    <div className="space-y-4">
+      <h1 className="text-3xl font-bold uppercase">Your stats</h1>
       <TdeeResultForm />
       <Calories calories={caloriesWithActivity} />
       <CaloriesTable bmr={bmr} activityLevel={activity} />
       <BMI bmi={bmi} />
       <Macronutrients calories={caloriesWithActivity} />
-    </>
+    </div>
   );
 }

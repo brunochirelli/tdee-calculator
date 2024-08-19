@@ -1,5 +1,10 @@
 import { ActivityLevel } from ".";
 
+export const SEX_TEXT_MAP: Record<string, string> = {
+  1: "Female",
+  2: "Male",
+};
+
 export const ACTIVITY_NAME_MAP: Record<string, string> = {
   [ActivityLevel.SEDENTARY]: "Sedentary",
   [ActivityLevel.LIGHTLY_ACTIVE]: "Light Exercise",
@@ -31,4 +36,12 @@ export const BMI_SCORE_TEXT_MAP: Record<number, string> = {
   1: "18.5 – 24.99",
   2: "25 – 29.99",
   3: "30+",
+};
+
+export const MOCK_QUERY = {
+  sex: "1",
+  age: "29",
+  height: "173",
+  weight: "87",
+  activity: "1.2",
 };
