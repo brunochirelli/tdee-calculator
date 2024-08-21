@@ -1,4 +1,5 @@
 import TdeeForm from "@/components/forms/TdeeForm/TdeeForm";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
           calculator will also display your BMI, BMR and Macros.
         </p>
       </div>
-      <TdeeForm />
+      <Suspense fallback={<div>Loading...</div>}>
+        <TdeeForm />
+      </Suspense>
     </>
   );
 }

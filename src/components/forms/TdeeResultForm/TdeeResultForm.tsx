@@ -1,30 +1,21 @@
 "use client";
 
 import { useTdeeForm } from "@/hooks/useTdeeForm";
+import { useTdeeSearchQuery } from "@/hooks/useTdeeSearchQuery";
 import { cn } from "@/lib/utils";
 import { ACTIVITY_NAME_MAP, SEX_TEXT_MAP } from "@/types/consts";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 export const TdeeResultForm = () => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
+  const [{ age, activity, height, weight, sex }, setSearchParam] =
+    useTdeeSearchQuery();
 
-  const { register, watch } = useTdeeForm();
-
-  const age = watch("age");
-  const activityLevel = watch("activity");
-  const weight = watch("weight");
-  const height = watch("height");
-  const sex = watch("sex");
+  const { register } = useTdeeForm();
 
   const currentActivityLevelLabel =
-    ACTIVITY_NAME_MAP[activityLevel as keyof typeof ACTIVITY_NAME_MAP];
+    ACTIVITY_NAME_MAP[activity as keyof typeof ACTIVITY_NAME_MAP];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set(e.target.name, e.target.value);
-    router.replace(`${pathname}?${params.toString()}`);
+    setSearchParam({ [e.target.name]: e.target.value });
   };
 
   const spinButtonHiddenClass =
@@ -42,11 +33,15 @@ export const TdeeResultForm = () => {
           {
             <input
               {...register("age", { onChange: handleChange })}
-              className={cn("max-w-[2ch]", spinButtonHiddenClass, "ring-1")}
+              className={cn(
+                `max-w-[${age.length}ch]`,
+                spinButtonHiddenClass,
+                "ring-1",
+              )}
               type="number"
               placeholder="Age"
               min={10}
-              max={99}
+              max={100}
             />
           }{" "}
           year old{" "}
@@ -64,7 +59,11 @@ export const TdeeResultForm = () => {
           {
             <input
               {...register("height", { onChange: handleChange })}
-              className={cn("max-w-[3ch]", spinButtonHiddenClass, "ring-1")}
+              className={cn(
+                `max-w-[${height.length}ch]`,
+                spinButtonHiddenClass,
+                "ring-1",
+              )}
               type="number"
               placeholder="cm"
             />
@@ -82,7 +81,7 @@ export const TdeeResultForm = () => {
               placeholder="kg"
             />
           }{" "}
-          kg while {activityLevel === "1.2" ? "being" : "doing"}{" "}
+          kg while {activity === "1.2" ? "being" : "doing"}{" "}
           {
             <select
               {...register("activity", { onChange: handleChange })}
@@ -106,7 +105,7 @@ export const TdeeResultForm = () => {
               </option>
             </select>
           }{" "}
-          {activityLevel !== "1.2" && "activity."}
+          {activity !== "1.2" && "activity."}
         </p>
       </form>
     </>

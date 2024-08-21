@@ -3,8 +3,8 @@ import Calories from "./Calories";
 
 describe("Calories", () => {
   it("Should render without errors", () => {
-    render(<Calories calories={2000} />);
+    render(<Calories />);
 
-    expect(screen.getByText(/2000/)).toBeInTheDocument();
+    expect(screen.getByText(/1974/)).toBeInTheDocument();
   });
 });

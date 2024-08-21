@@ -9,3 +9,12 @@ vi.mock("next/navigation", () => ({
   useSearchParams: vi.fn(() => new URLSearchParams(MOCK_QUERY)),
   usePathname: vi.fn(() => "/results"),
 }));
+
+vi.mock("nuqs", () => ({
+  useQueryStates: vi.fn(() => [MOCK_QUERY, vi.fn()]),
+}));
+
+vi.mock("nuqs/server", async () => ({
+  createSearchParamsCache: vi.fn(() => MOCK_QUERY),
+  parseAsString: { withDefault: vi.fn(() => "") },
+}));

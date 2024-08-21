@@ -1,8 +1,8 @@
 "use client";
-import { ActivityLevel, Sex } from "@/types";
+
+import { ActivityLevel } from "@/types";
 import { useRouter } from "next/navigation";
 import { TdeeFormSchema, useTdeeForm } from "../../../hooks/useTdeeForm";
-import { calculateBMR } from "@/lib/bmr";
 import {
   Form,
   FormControl,
