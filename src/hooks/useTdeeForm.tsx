@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useTdeeSearchQuery } from "./useTdeeSearchQuery";
 
 const schema = z.object({
   activity: z.string(),
@@ -16,15 +17,15 @@ const schema = z.object({
 export type TdeeFormSchema = z.infer<typeof schema>;
 
 export const useTdeeForm = () => {
-  const searchParams = useSearchParams();
+  const [{ activity, sex, age, height, weight }] = useTdeeSearchQuery();
 
   return useForm<TdeeFormSchema>({
     defaultValues: {
-      activity: searchParams.get("activity") ?? "1.2",
-      sex: searchParams.get("sex") ?? "2",
-      age: searchParams.get("age") ?? "",
-      height: searchParams.get("height") ?? "",
-      weight: searchParams.get("weight") ?? "",
+      activity: activity ?? "1.2",
+      sex: sex ?? "2",
+      age: age ?? "",
+      height: height ?? "",
+      weight: weight ?? "",
     },
     resolver: zodResolver(schema),
   });

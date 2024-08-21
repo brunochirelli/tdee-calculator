@@ -1,16 +1,19 @@
+"use client";
+
+import { useTdeeSearchQuery } from "@/hooks/useTdeeSearchQuery";
+import { calculateBMR } from "@/lib/bmr";
 import { cn } from "@/lib/utils";
 import { ActivityLevel } from "@/types";
 import { ACTIVITY_NAME_MAP } from "@/types/consts";
 
-type CaloriesTableProps = {
-  bmr: number;
-  activityLevel: string;
-};
-
-export default function CaloriesTable({
-  bmr,
-  activityLevel,
-}: CaloriesTableProps) {
+export default function CaloriesTable() {
+  const [{ activity, age, height, weight, sex }] = useTdeeSearchQuery();
+  const bmr = calculateBMR({
+    ageInYears: +age,
+    heighInCm: +height,
+    weightInKg: +weight,
+    sex,
+  });
   const availableActivityLevels = Object.values(ActivityLevel);
 
   return (
@@ -20,7 +23,7 @@ export default function CaloriesTable({
           <tr
             key={activityLevelValue}
             className={cn(
-              { "font-bold": activityLevel === activityLevelValue },
+              { "font-bold": activity === activityLevelValue },
               "w-full border-b",
             )}
           >

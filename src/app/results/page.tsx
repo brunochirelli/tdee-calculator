@@ -12,17 +12,21 @@ import {
 } from "@/lib/bmr";
 import { TdeeResultForm } from "@/components/forms/TdeeResultForm/TdeeResultForm";
 import BMI from "@/components/ui/Bmi/Bmi";
+import { useTdeeSearchQuery } from "@/hooks/useTdeeSearchQuery";
+import { searchParamsCache } from "@/utils/searchParams";
 
 type ResultsPageProps = {
   searchParams: TdeeSearchParams;
 };
 
 export default function ResultsPage({ searchParams }: ResultsPageProps) {
+  const { age, sex, height, weight, activity } =
+    searchParamsCache.parse(searchParams);
+
   if (!isValidSearchParams(searchParams)) {
     redirect("/");
   }
 
-  const { age, sex, height, weight, activity } = searchParams;
   const bmr = calculateBMR({
     ageInYears: +age,
     heighInCm: +height,
@@ -36,8 +40,8 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
     <div className="space-y-8">
       <h1 className="text-3xl font-bold uppercase">Your stats</h1>
       <TdeeResultForm />
-      <Calories calories={caloriesWithActivity} />
-      <CaloriesTable bmr={bmr} activityLevel={activity} />
+      <Calories />
+      <CaloriesTable />
       <BMI bmi={bmi} />
       <Macronutrients calories={caloriesWithActivity} />
     </div>
