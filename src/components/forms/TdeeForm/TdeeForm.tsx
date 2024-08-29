@@ -1,8 +1,8 @@
 "use client";
+
 import { ActivityLevel, Sex } from "@/types";
 import { useRouter } from "next/navigation";
 import { TdeeFormSchema, useTdeeForm } from "../../../hooks/useTdeeForm";
-import { calculateBMR } from "@/lib/bmr";
 import {
   Form,
   FormControl,
@@ -25,7 +25,6 @@ import { ACTIVITY_NAME_MAP } from "@/types/consts";
 
 export default function TdeeForm() {
   const router = useRouter();
-
   const form = useTdeeForm();
 
   const onSubmit = (data: TdeeFormSchema) => {

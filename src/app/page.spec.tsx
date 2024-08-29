@@ -8,8 +8,10 @@ class ResizeObserver {
 }
 
 describe("page.spec", () => {
-  // @ts-ignore
-  window.ResizeObserver = ResizeObserver;
+  if (window) {
+    // @ts-ignore
+    window.ResizeObserver = ResizeObserver;
+  }
 
   it("should work", () => {
     render(<Home />, { wrapper: TestClientProvider });

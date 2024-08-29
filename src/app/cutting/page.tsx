@@ -1,8 +1,3 @@
-import { calculateBMI } from "@/lib/bmi";
-import Calories from "@/components/ui/Calories/Calories";
-import CaloriesTable from "@/components/ui/CaloriesTable/CaloriesTable";
-
-import Macronutrients from "@/components/ui/Macronutrients/Macronutrients";
 import { TdeeSearchParams } from "@/types";
 import { redirect } from "next/navigation";
 import {
@@ -10,9 +5,8 @@ import {
   calculateRateByActivityLevel,
   isValidSearchParams,
 } from "@/lib/bmr";
-import { TdeeResultForm } from "@/components/forms/TdeeResultForm/TdeeResultForm";
-import BMI from "@/components/ui/Bmi/Bmi";
 import CuttingCalculator from "@/components/ui/CuttingCalculator/CuttingCalculator";
+import { Suspense } from "react";
 
 type ResultsPageProps = {
   searchParams: TdeeSearchParams;
@@ -35,10 +29,12 @@ export default function CuttingPage({ searchParams }: ResultsPageProps) {
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold uppercase">Cutting Planner</h1>
-      <CuttingCalculator
-        calories={caloriesWithActivity}
-        currentWeight={+weight}
-      />
+      <Suspense fallback={"loading..."}>
+        <CuttingCalculator
+          calories={caloriesWithActivity}
+          currentWeight={+weight}
+        />
+      </Suspense>
     </div>
   );
 }
